@@ -16,13 +16,12 @@ namespace SpreadsheetApp.Tests
         }
 
         [Theory]
-        // ВИПРАВЛЕННЯ 1: Прибрали знак "=" на початку, бо парсер приймає чисту формулу
         [InlineData("5", "5")]
         [InlineData("-5", "-5")]
         [InlineData("+10", "10")]
         [InlineData("5+5", "10")]
         [InlineData("10-2", "8")]
-        [InlineData("-(-5)", "5")] // Було "=-(-5)"
+        [InlineData("-(-5)", "5")]
         public void Evaluate_Arithmetic_ReturnsCorrectResult(string expr, string expected)
         {
             var result = AntlrParser.Evaluate(expr, _mockCells);
@@ -44,8 +43,7 @@ namespace SpreadsheetApp.Tests
         [InlineData("true eqv true", "True")]
         [InlineData("true eqv false", "False")]
         [InlineData("1 eqv 1", "True")]
-        // ВИПРАВЛЕННЯ 2: 5 і 2 - це обидва True. Щоб отримати False, беремо 0.
-        [InlineData("5 eqv 0", "False")] // Було "5 eqv 2"
+        [InlineData("5 eqv 0", "False")]
         public void Evaluate_Eqv_ReturnsCorrectResult(string expr, string expected)
         {
             var result = AntlrParser.Evaluate(expr, _mockCells);
