@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SpreadsheetApp.ViewModels"
+             x:Class="SpreadsheetApp.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto, *">
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="10">
+            <Button Text="Calc" Command="{Binding CalculateCommand}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
+            <Button Text="Help" Command="{Binding HelpCommand}"/>
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding CellsDisplay}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Gray" HeightRequest="50">
+                        <Grid ColumnDefinitions="30, *">
+                            <Label Grid.Column="0" Text="{Binding Address}" VerticalTextAlignment="Center"/>
+                            <Entry Grid.Column="1" Text="{Binding Expression}"/>
+                            <Label Grid.Column="1" Text="{Binding Value}" HorizontalOptions="End" VerticalOptions="Center" TextColor="Blue" InputTransparent="True"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

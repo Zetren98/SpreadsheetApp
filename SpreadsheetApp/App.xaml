@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpreadsheetApp.App">
+             
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#107C41</Color>
+            <Color x:Key="SecondaryColor">#F3F2F1</Color>
+            <Color x:Key="AccentColor">#217346</Color>
+            <Color x:Key="CellBorder">#E1DFDD</Color>
+
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="14,10"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+            <Style TargetType="Border" x:Key="CellBorderStyle">
+                <Setter Property="Stroke" Value="{StaticResource CellBorder}"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="AddressLabelStyle">
+                <Setter Property="TextColor" Value="#605E5C"/>
+                <Setter Property="BackgroundColor" Value="#F3F2F1"/>
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

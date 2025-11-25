@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SpreadsheetApp/SpreadsheetApp.csproj" />
+  <Project Path="Unittest/Unittest.csproj" Id="9c9392af-9ac0-42ed-bf55-002ee12ebae1" />
+</Solution>
