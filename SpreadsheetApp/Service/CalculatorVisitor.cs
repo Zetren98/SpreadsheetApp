@@ -15,13 +15,11 @@ namespace SpreadsheetApp.Services
             _cells = cells;
         }
 
-        // 1. Фікс EOF (щоб не було Object Reference error)
         public override object VisitCompileUnit(LabCalculatorParser.CompileUnitContext context)
         {
             return Visit(context.expression());
         }
 
-        // 2. Бінарні операції (5+5) — Тепер це працюватиме, бо в .g4 є мітка #BinaryAddSub
         public override object VisitBinaryAddSub(LabCalculatorParser.BinaryAddSubContext context)
         {
             var left = ToBigInt(Visit(context.additive(0)));
@@ -33,7 +31,6 @@ namespace SpreadsheetApp.Services
             return BigInteger.Zero;
         }
 
-        // 3. Унарні операції (+5, -5)
         public override object VisitUnaryNum(LabCalculatorParser.UnaryNumContext context)
         {
             var val = ToBigInt(Visit(context.unary()));
@@ -41,13 +38,10 @@ namespace SpreadsheetApp.Services
             return val;
         }
 
-        // Цей метод потрібен, щоб зв'язати additive і unary (через мітку #UnaryExpr)
         public override object VisitUnaryExpr(LabCalculatorParser.UnaryExprContext context)
         {
             return Visit(context.unary());
         }
-
-        // --- Решта стандартних методів ---
 
         public override object VisitUnaryBool(LabCalculatorParser.UnaryBoolContext context)
         {
